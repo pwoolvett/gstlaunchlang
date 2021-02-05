@@ -1,0 +1,46 @@
+filesrc
+  location=/opt/nvidia/deepstream/deepstream/samples/streams/sample_720p.h264
+! h264parse
+! nvv4l2decoder
+! muxer.sink_0
+nvstreammux
+  width=1280
+  height=720
+  batch-size=1
+  name=muxer
+  hola='mundo no'
+! nvinfer
+    config-file-path=/mnt/nvme/pythia/data/models/nvdsosd/config_infer_primary.txt
+    batch-size={batch_size}
+    name=pgie
+    hola="mundo no"
+    hola=hip-hop
+! video/x-raw,format=RGB
+! nvvideoconvert name=nvvideoconvert
+! video/x-raw,format=RGB ! 
+! nvdsosd
+! 'video/x-raw, ! format=RGB'
+! nvvideoconvert
+! 'video/x-raw,format=RGB' !
+! videoconvert
+! appsink
+  name=pythia
+  emit-signals=true
+  another=' videoconvert '
+  caps=video/x-raw,format=RGB
+! appsink
+  caps='video/x-raw,format=RGB'
+
+"asdf" appsink
+
+'asdf' appsink
+
+hola="mundo no"
+
+hola='mundo no'
+
+hola='mundo no"'
+
+asdf="""asdf"""
+
+"""asdf"""

@@ -1,0 +1,137 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "gstlaunch",
+  "patterns": [
+    { "include": "#line_continuation" },
+    { "include": "#kwarg" },
+    { "include": "#property_key" },
+    { "include": "#property_value" },
+    { "include": "#asignment" },
+    { "include": "#pad" },
+    { "include": "#number" },
+    { "include": "#element" },
+    { "include": "#connector" }
+  ],
+  "repository": {
+    "line_continuation": {
+      "patterns": [
+        {
+          "name": "constant.language.gstlaunch",
+          "match": "\\\\$"
+        }
+      ]
+    },
+    "kwarg": {
+      "patterns": [
+        {
+          "name": "variable.parameter.class.gstlaunch",
+          "match": "(?<={)[\\w_]+?(?=})"
+        }
+      ]
+    },
+    "property_key": {
+      "patterns": [
+        {
+          "name": "variable.parameter.class.gstlaunch",
+          "match": "\\s+\\w+([\\w_-])*(?==[{\"'/\\w\\.-])"
+        }
+      ]
+    },
+    "property_value": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.gstlaunch",
+          "match": "(?<=\\w=['\"])\\w[\\w/,. -]*(?=['\"])"
+        },
+        {
+          "name": "string.quoted.double.gstlaunch",
+          "match": "(?<=\\w=)[a-zA-Z/][\\w/,.-]*\\s"
+        }
+      ]
+    },
+    "asignment": {
+      "patterns": [
+        {
+          "name": "keyword.operator.assignment.gstlaunch",
+          "match": "(?<=\\w)=(?=['\\({/\\w_-])"
+        }
+      ]
+    },
+    "number": {
+      "patterns": [
+        {
+          "name": "constant.numeric.gstlaunch",
+          "match": "(?<=[\\s=])\\d+(?:\\.\\d+)?(?=\\W)"
+        }
+      ]
+    },
+    "element": {
+      "patterns": [
+        {
+          "name": "entity.name.class.gstlaunch",
+          "match": "(?x)\n  (?<!\\.) \\b(\n    nvvideoconvert | nvdsosd | bytes | classmethod | complex | dict\n    | float | frozenset | int | list | object | property\n    | set | slice | staticmethod | str | tuple | type\n\n    (?# Although 'super' is not a type, it's related to types,\n        and is special enough to be highlighted differently from\n        other built-ins)\n    | super\n  )\\b\n"
+        }
+      ]
+    },
+    "connector": {
+      "patterns": [
+        {
+          "name": "support.function.magic.gstlaunch",
+          "match": "\\B!\\B"
+        }
+      ]
+    },
+    "pad": {
+      "patterns": [
+        {
+          "name": "support.function.magic.gstlaunch",
+          "match": "\\s+\\w+([\\w_-])*\\.(sink|src)_\\d+\\s+"
+        }
+      ]
+    },
+    "string": {
+      "name": "string.quoted.double.gstlaunch",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.gstlaunch",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "capskey": {
+      "patterns": [
+        {
+          "name": "support.function.builtin.gstlaunch",
+          "match": "\\bcaps(?==[\\w'])"
+        }
+      ]
+    },
+    "capsval": {
+      "patterns": [
+        {
+          "name": "entity.name.class.gstlaunch",
+          "match": "(?<=caps=)'?[\\w\\./,=-]+'?\\s?"
+        }
+      ]
+    },
+    "capsalone": {
+      "patterns": [
+        {
+          "name": "entity.name.class.gstlaunch",
+          "match": "(?<=!)\\s+['/\\w,=-]+"
+        }
+      ]
+    },
+    "property": {
+      "patterns": [
+        {
+          "name": "entity.name.class.gstlaunch",
+          "match": "[/\\w-\\\\.]+=[/\\w-\\.]+"
+        }
+      ]
+    }
+  },
+  "scopeName": "root.gstlaunch"
+}

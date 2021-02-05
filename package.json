@@ -1,0 +1,25 @@
+{
+    "name": "gstlaunch",
+    "displayName": "gstlaunch",
+    "description": "Syntax for gst-launch pipelines",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.53.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "gstlaunch",
+            "aliases": ["gstlaunch", "gstlaunch"],
+            "extensions": [".gstp"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "gstlaunch",
+            "scopeName": "root.gstlaunch",
+            "path": "./syntaxes/gstlaunch.tmLanguage.json"
+        }]
+    }
+}
